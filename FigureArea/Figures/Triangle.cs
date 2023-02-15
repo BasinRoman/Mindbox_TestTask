@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Figure_area.Figures
+namespace FigureArea.Figures
 {
     public class Triangle: AbstractFigure
     {
-        public double firstFacet { get; set; }
-        public double secondFacet { get; set; }
-        public double thirdFacet { get; set; }
+        public double firstFacet { get; }
+        public double secondFacet { get; }
+        public double thirdFacet { get; }
         readonly double[] SidesArray;
-        
         
         // Я положил валидацию данных в конструктор, однако на крупных проектах так делать не стоит.
         // Память под объект будет выделена даже если мы словим ошибку. Получим потенциальный memory leak. 
@@ -19,10 +18,13 @@ namespace Figure_area.Figures
                 throw new ArgumentException("Стороны треугольника не должны быть меньше или равны нулю!");
             else if (firstFacet + secondFacet < thirdFacet || secondFacet + thirdFacet < firstFacet || firstFacet + thirdFacet < secondFacet)
                 throw new ArgumentException("Сумма двух сторон треугольника не должна быть равна или меньше третьей стороны!");
+            this.firstFacet = firstFacet;
+            this.secondFacet = secondFacet;
+            this.thirdFacet = thirdFacet;
             SidesArray = new double[] { firstFacet, secondFacet, thirdFacet };
         }
 
-        public override double GetArea()
+        public override double GetArea() //переопределим абстрактный метод
         {
             double p = (firstFacet + secondFacet + thirdFacet)/2;
             return Math.Sqrt(p * (p - firstFacet) * (p - secondFacet) * (p - thirdFacet));

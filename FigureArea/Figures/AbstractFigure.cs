@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Figure_area.Figures
+namespace FigureArea.Figures
 {
     public abstract class AbstractFigure
     {

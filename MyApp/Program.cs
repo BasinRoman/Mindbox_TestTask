@@ -1,4 +1,4 @@
-﻿using Figure_area.Figures;
+﻿using FigureArea.Figures;
 
 namespace ConsoleApplication21
 {
@@ -6,12 +6,13 @@ namespace ConsoleApplication21
     {
         static void Main(string[] args)
         {
-            var circle= new Circle { radius = 2};
-            Triangle triangle = new(1,2,3);
+            var triangle = new Triangle(firstFacet: 3, secondFacet: 7, thirdFacet: 8);
+            var circle = new Circle(radius: 2);
+            
             Console.WriteLine(circle.GetArea());
             Console.WriteLine(triangle.GetArea());
             Console.WriteLine(triangle.ifRight());
-            Console.ReadLine();
+            
         }
     }
 }
